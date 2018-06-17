@@ -1,0 +1,44 @@
+%node.js 홈페이지 doc에서 모듈들 찾아서 사용할 모듈
+var a = require('모듈'); 이렇게 받아서 사용
+
+--- npm
+npm : Node Package Manager
+타인의 모듈을 사용하는 방법 -> npm : node계의 앱스토어(설치,삭제,업그레이드,의존성 관리)
+npm 독립적인 앱 설치 ->  npm install sample -g 
+                        uglifyjs프로그램: 필수코드 제외한 공백과 줄바꿈 같은 것을 제거함
+                        uglifyjs 파일명.js -o 변환된파일명.min.js -m
+                        -o : 저장 -m : 바뀌어도 되는 변수명(매개변수 같은) 한글자로 만듬.
+                        변환된파일명.js에 min을 붙여서 파일이 최소화 되었다고 구분함(관습)
+
+npm으로 모듈설치 -> npm install sample --save(이렇게 하려면 프로젝트 폴더를 npm 폴더로 초기화 시켜야댐 npm init)
+                underscore.js(다른사람이 만든 모듈(패키지) 가져오는 것)
+
+
+--- 콜백함수
+명령프롬포트에 node 파일명.js 안하고 node라고 하면 직접 자바스크립트 코드를 한 줄 한 줄 작성하여 실행시킬 수 있음
+a = [3,1,2];
+function b(v1, v2){ return  v2-v1}; //콜백함수
+a.sort(b); //콜백함수는 누군가에게 호출 당하는 함수
+console.log(a); -> 3,2,1
+
+function b(v1, v2){ return  v1-v2}; //콜백함수
+a.sort(b); 
+console.log(a); -> 1,2,3
+
+콜백 함수에 따라 sort의 기능이 다양하게 됨 이래서 콜백을 씀
+
+
+--- 동기/비동기
+동기(Synchronous)
+비동기(Asynchronous)
+
+노드제이에스는 비동기 권유 / 동기를 위해 Sync 붙은 함수들 있음
+노드js는 싱글스레드로 동작함
+
+
+--Express 도입
+node를 이용해서 만들어진 웹 프레임워크
+
+-- 라우터
+get() 이런 메소드 라우터라고 함 -> 어떤 요청이 들어왔을 때 그 요청이 길을 찾을 수 있게 연결
+사용자의 요청과 그 요청에 대한 처리하는 컨트롤러를 중개해주는 것이 라우터가 하는 역할이다.
