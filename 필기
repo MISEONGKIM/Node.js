@@ -13,9 +13,12 @@ npm 독립적인 앱 설치 ->  npm install sample -g
                         -o : 저장 -m : 바뀌어도 되는 변수명(매개변수 같은) 한글자로 만듬.
                         변환된파일명.js에 min을 붙여서 파일이 최소화 되었다고 구분함(관습)
 
-npm으로 모듈설치 -> npm install sample --save(이렇게 하려면 프로젝트 폴더를 npm 폴더로 초기화 시켜야댐 npm init)
-                underscore.js(다른사람이 만든 모듈(패키지) 가져오는 것)
-
+npm으로 모듈설치 -> 다른사람이 만든 모듈(패키지) 가져오는 것이다. 
+                가져오려고 하는 곳인 우리 것도 패키지이기 때문에 npm상에서 현재의 디렉토리를 패키지로 지정하는 명령어 npm init 먼저 해야함
+                Package.json : npm init이 하는 역할은 이 파일 생성해주는 역할  
+                npm install sample --save(save 있으면 dependencies가 Package.json에 생김)
+                dependencies가 있으면 새로운 폴더에 프로젝트 다시 시작해도 쉽게 가져올 수 있어서 프로젝트에 이 모듈이 반드시 함께 있어야할 경우엔 save
+                소스코드에 포함시킬 건 아닌데 일시적으로 사용할 시 save 안하고 설치
 
 --- 콜백함수
 명령프롬포트에 node 파일명.js 안하고 node라고 하면 직접 자바스크립트 코드를 한 줄 한 줄 작성하여 실행시킬 수 있음
