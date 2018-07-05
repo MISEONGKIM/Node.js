@@ -73,7 +73,7 @@ http요청  ▽  라우트 작업
 
 미들웨어도 콜백 함수임 , 함수 만들어서 app.use()에 넣어주면됨 
 requst가 들어왔을 때 다른 것 처리하기 전에 함수 실행되어 처리할 작업하고 
-next(:콜백함수)를 실행하면 다른 미들웨어를 실행하거나 라우팅 작업실행 함
+next(=콜백함수)를 실행하면 다른 미들웨어를 실행하거나 라우팅 작업실행 함
 var myLogger = function (req,res,next) {
   console.log(req.url);
   next();
@@ -84,3 +84,19 @@ npm install --save morgan body-parser //이미 만들어진 미들웨어 설치
 morgan : 로깅 미들웨어
 body-parser: JSON 형태 데이터 파싱
 
+------------------------------------- express 템플릿 엔진 Jade 
+express자체는 템플릿 엔진 가지고 있지 않기 때문에 설치하고 express에 연결 
+tab으로 태그 들여쓰기 됨  
+
+html                         <html>      
+  head                            <head></heda>
+  body               -->>         <body> 
+    h1 hello jade                    <h1>hello jade</h1>
+                                  </body>
+                             </html> 
+for문 같은 화면에 출력되는 것이 아니면 앞에 -붙여야함 
+ul
+  -for(var i = 0; i < 5; i++) 
+    li coding
+div= time //time은 변수임 jade를 사용하는 express 쪽에서 변수값 주입
+google에 jade template engine 검색하면 사용법 예시 있음 
