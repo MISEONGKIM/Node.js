@@ -34,3 +34,24 @@ app.get("/template", function(req, res) {
 });
 //즉, response로 temp를 렌더하게 되면 express는 내부적으로 정의해놓은 views디렉토리에서 템플릿엔진으로 jade로 정의 해놓았기 때문에
 //jade의 확장자인 temp.jade 찾아서 이 템플릿 파일을 jade의 문법에 따라 해석한 후 사용자에게 response하는 코드
+
+app.get("/form", (req, res) => {
+  res.render("form");
+});
+app.get("/form_receiver", (req, res) => {
+  //form 이 get 방식일 때
+  var title = req.query.title;
+  var description = req.query.description;
+  res.send(title + "," + description);
+});
+
+var bodyParser2 = require("body-parser");
+app.use(bodyParser2.urlencoded({ extended: false }));
+//request가 body없는데 bodyParser가 추가해줌
+app.post("/form_receiver", (req, res) => {
+  //form 이 post 방식일 때
+  //req.body 사용하려면 body-parser라는 미들웨어 포함시켜야햄 안하면 값이 undefined임
+  var title = req.body.title;
+  var description = req.body.description;
+  res.send(title + "," + description);
+});

@@ -86,7 +86,7 @@ body-parser: JSON 형태 데이터 파싱
 
 ------------------------------------- express 템플릿 엔진 Jade 
 express자체는 템플릿 엔진 가지고 있지 않기 때문에 설치하고 express에 연결 
-tab으로 태그 들여쓰기 됨  
+tab으로 태그 들여쓰기 구분되게  
 
 html                         <html>      
   head                            <head></heda>
@@ -100,3 +100,28 @@ ul
     li coding
 div= time //time은 변수임 jade를 사용하는 express 쪽에서 변수값 주입
 google에 jade template engine 검색하면 사용법 예시 있음 
+어떤 태그에 속성을 지정하고 싶다면 ()에 속성추가 -> meta(charset='utf-8')
+
+------------------------------------- 쿼리스트링
+localhost:3000/topic?id=1 
+-> add.get('/topic',function(req,res) {
+  res.send(req.query.id)}); //req.query.id == 1임
+
+localhost:3000/topic?id=1&name=zzz
+-> add.get('/topic',function(req,res) {
+  res.send(req.query.id + "," + req.query.name)}); 
+
+
+------------------------------------- 시맨틱 url
+localhost:3000/topic/1
+-> add.get('/topic/:id',function(req,res) {
+  res.send(req.params.id)}); //req.params.id == 1임
+
+localhost:3000/topic/1/edit
+-> add.get('/topic/:id/:mode',function(req,res) {
+  res.send(req.params.id + "," + req.params.mode)});
+
+------------------------------------- get/post
+form의 전송방식 post로 할 경우
+req.query.id가 아니고 query에 body 들어감  
+req.body 사용하려면 body-parser라는 미들웨어 포함시켜야햄 안하면 값이 undefined 나옴
