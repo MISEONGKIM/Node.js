@@ -19,7 +19,7 @@ npm으로 모듈설치 -> npm install sample --save(이렇게 하려면 프로�
                 underscore.js(다른사람이 만든 모듈(패키지) 가져오는 것)
 
 npm install -g npm -> 업그레이드 
-그냥 install 하면 ./node_modules 디렉터리에 패키지 설치를 하고 끝. --save, --save-dev 옵션은 ./package.json 업데이트를 같이해준다.
+그냥 install 하면 ./node_modules(express설치시 생성됨) 디렉터리에 패키지 설치를 하고 끝. --save, --save-dev 옵션은 ./package.json 업데이트를 같이해준다.
 npm repo morgan -> morgan에 관한 git 페이지 뜸 설명서?느낌
 
 ------------------------------------- 콜백함수
@@ -125,3 +125,8 @@ localhost:3000/topic/1/edit
 form의 전송방식 post로 할 경우
 req.query.id가 아니고 query에 body 들어감  
 req.body 사용하려면 body-parser라는 미들웨어 포함시켜야햄 안하면 값이 undefined 나옴
+
+------------------------------------ node supervisor
+node app.js -> 수정 후 다시 실행해야됨 
+supervisor app.js -> 자동으로 재시작됨 이러한 기능을 watch라고 함 변경된 사항을 보고 있다가 변경사항 일어났을 때 자동으로 껏다가 다시 키는 것
+npm isntall supervisor -g //전역에서 사용하도록 -g
