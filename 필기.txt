@@ -43,6 +43,29 @@ console.log(a); -> 1,2,3
 노드제이에스는 비동기 권유 / 동기를 위해 Sync 붙은 함수들 있음
 노드js는 싱글스레드로 동작함
 
+asnyc/await 는 비동기 코드를 작성하는 새로운 방법이다. 이전에는 비동기코드를 작성하기 위해 callback이나 promises를 사용해야 했다.
+async/await는 promise처럼 non-blocking 이다.
+async/await는 동기와 비동기 에러 모두를 try/catch를 통해서 처리할 수 있게 한다.
+
+promise 사용 : 
+  const makeRequest = () =>
+    getJSON()
+      .then(data => {
+        console.log(data)
+        return "done"
+      })
+  makeRequest()
+
+asnyc/await 사용 :
+  const makeRequest = async () => {
+    console.log(await getJSON())
+    return "done"
+    }
+  makeRequest()
+
+1. 함수의 앞에 async 라는 단어가 오게된다. await 키워드는 오직 async 로 정의된 함수의 내부에서만 사용될 수 있다. 모든 async 함수는 암묵적으로 promise를 반환하고, promise가 함수로부터 반환할 값(예제에서는 "done" 이라는 문자열)을 resolve 한다.
+2. 위와 같은 점 때문에 우리는 await 를 우리 코드의 탑 레벨에서는 사용할 수 없다. async 함수 안에 위치한 경우에만 사용이 가능하다.
+3. await getJSON() 는 console.log 의 호출이 getJSON() promise가 resolve된 후에 일어나고, 그 후에 값을 출력할 것이라는 것을 의미한다.
 
 -------------------------------------Express 
 node를 이용해서 만들어진 웹 프레임워크 
